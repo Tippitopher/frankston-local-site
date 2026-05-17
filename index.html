@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Frankston Local — Free Weekly Newsletter</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink: #12100e;
+  --ocean: #1a4a6e;
+  --ocean-deep: #0f2d45;
+  --sand: #c8a96e;
+  --sand-light: #e8d5a3;
+  --paper: #f7f2e8;
+  --cream: #ede5d0;
+  --muted: #7a7060;
+  --coral: #c0392b;
+  --white: #ffffff;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Lora', Georgia, serif;
+  background: var(--paper);
+  color: var(--ink);
+  overflow-x: hidden;
+}
+
+/* ── GRAIN OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1000;
+  opacity: 0.4;
+}
+
+/* ── MASTHEAD ── */
+.masthead {
+  background: var(--ocean-deep);
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 3px solid var(--sand);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.masthead-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 900;
+  color: var(--white);
+  padding: 14px 0;
+  letter-spacing: -0.5px;
+}
+.masthead-title span { color: var(--sand); }
+.masthead-cta {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ocean-deep);
+  background: var(--sand);
+  padding: 9px 20px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.masthead-cta:hover { background: var(--sand-light); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-left {
+  background: var(--ocean-deep);
+  padding: 80px 60px 80px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Diagonal rule */
+.hero-left::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -60px;
+  width: 120px;
+  height: 100%;
+  background: var(--ocean-deep);
+  transform: skewX(-4deg);
+  z-index: 2;
+}
+
+.hero-left-inner { position: relative; z-index: 3; }
+
+.hero-edition {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--sand);
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.hero-edition::before {
+  content: '';
+  width: 32px;
+  height: 1px;
+  background: var(--sand);
+}
+
+.hero-headline {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: clamp(42px, 5vw, 72px);
+  line-height: 0.95;
+  color: var(--white);
+  margin-bottom: 8px;
+}
+.hero-headline em {
+  font-style: italic;
+  color: var(--sand);
+  display: block;
+}
+
+.hero-sub {
+  font-family: 'Lora', serif;
+  font-size: 17px;
+  font-style: italic;
+  color: rgba(255,255,255,0.55);
+  margin: 20px 0 36px;
+  line-height: 1.6;
+  max-width: 380px;
+}
+
+/* Signup form */
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 400px;
+}
+.form-row {
+  display: flex;
+  gap: 0;
+}
+.signup-input {
+  flex: 1;
+  padding: 16px 18px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  border: 2px solid rgba(200,169,110,0.3);
+  background: rgba(255,255,255,0.06);
+  color: var(--white);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.signup-input::placeholder { color: rgba(255,255,255,0.3); }
+.signup-input:focus { border-color: var(--sand); }
+.signup-btn {
+  padding: 16px 28px;
+  background: var(--sand);
+  color: var(--ocean-deep);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  white-space: nowrap;
+}
+.signup-btn:hover { background: var(--sand-light); transform: translateY(-1px); }
+.signup-btn:active { transform: translateY(0); }
+
+.form-promise {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.04em;
+}
+.form-promise strong { color: rgba(255,255,255,0.6); }
+
+.hero-stats {
+  display: flex;
+  gap: 28px;
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(200,169,110,0.2);
+}
+.stat-item { }
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--sand);
+  line-height: 1;
+}
+.stat-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-top: 4px;
+}
+
+/* ── HERO RIGHT — NEWSPAPER PREVIEW ── */
+.hero-right {
+  background: var(--cream);
+  padding: 60px 48px 60px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.preview-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.preview-card {
+  background: var(--white);
+  border: 1px solid #ddd5c0;
+  padding: 28px;
+  box-shadow: 6px 6px 0 #c8b99a, 12px 12px 0 #b8a88a;
+  transform: rotate(1deg);
+  transition: transform 0.3s;
+  max-width: 360px;
+}
+.preview-card:hover { transform: rotate(0deg); }
+
+.preview-masthead {
+  text-align: center;
+  border-bottom: 3px double #c5b99a;
+  padding-bottom: 14px;
+  margin-bottom: 16px;
+}
+.preview-masthead h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--ocean-deep);
+  letter-spacing: -0.5px;
+}
+.preview-masthead h3 span { color: var(--sand); }
+.preview-date {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.preview-section {
+  margin-bottom: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #e8dcc8;
+}
+.preview-section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+.preview-tag {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 4px;
+}
+.preview-section h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--ink);
+  margin-bottom: 5px;
+}
+.preview-section p {
+  font-size: 11.5px;
+  line-height: 1.6;
+  color: #5a5040;
+}
+
+/* ── WHAT'S INSIDE ── */
+.inside {
+  padding: 100px 60px;
+  background: var(--paper);
+  position: relative;
+}
+.inside::before {
+  content: 'WHAT\'S INSIDE';
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.4em;
+  color: var(--muted);
+}
+
+.inside-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  max-width: 1000px;
+  margin: 0 auto;
+  background: #c5b99a;
+  border: 2px solid #c5b99a;
+}
+
+.inside-item {
+  background: var(--paper);
+  padding: 36px 32px;
+  transition: background 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.inside-item:hover { background: var(--cream); }
+
+.inside-icon {
+  font-size: 28px;
+  margin-bottom: 14px;
+  display: block;
+}
+.inside-item h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.inside-item p {
+  font-size: 13.5px;
+  line-height: 1.7;
+  color: var(--muted);
+}
+.inside-num {
+  position: absolute;
+  bottom: 20px;
+  right: 24px;
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  font-weight: 900;
+  color: rgba(0,0,0,0.04);
+  line-height: 1;
+}
+
+/* ── PROMISE STRIP ── */
+.promise {
+  background: var(--ocean-deep);
+  padding: 60px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 40px;
+  border-top: 4px solid var(--sand);
+  border-bottom: 4px solid var(--sand);
+}
+.promise-item {
+  text-align: center;
+}
+.promise-item .p-icon {
+  font-size: 24px;
+  margin-bottom: 10px;
+  display: block;
+}
+.promise-item h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--sand);
+  margin-bottom: 6px;
+}
+.promise-item p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.6;
+}
+
+/* ── SAMPLE ISSUE TEASER ── */
+.sample {
+  padding: 100px 60px;
+  background: var(--cream);
+  text-align: center;
+}
+.sample-eyebrow {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 16px;
+}
+.sample h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 900;
+  line-height: 1.1;
+  color: var(--ocean-deep);
+  margin-bottom: 16px;
+}
+.sample h2 em { font-style: italic; color: var(--sand); }
+.sample-sub {
+  font-size: 16px;
+  font-style: italic;
+  color: var(--muted);
+  margin-bottom: 56px;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.headlines-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2px;
+  max-width: 900px;
+  margin: 0 auto 56px;
+  background: #c5b99a;
+  border: 2px solid #c5b99a;
+  text-align: left;
+}
+.hl-main {
+  background: var(--white);
+  padding: 36px;
+}
+.hl-main .hl-tag {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--coral);
+  margin-bottom: 10px;
+}
+.hl-main h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 12px;
+  color: var(--ink);
+}
+.hl-main p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #4a4030;
+}
+.hl-sidebar {
+  background: var(--white);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.hl-small {
+  background: var(--paper);
+  padding: 20px 22px;
+  flex: 1;
+}
+.hl-small .hl-tag {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.hl-small h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--ink);
+}
+
+/* ── BOTTOM CTA ── */
+.bottom-cta {
+  background: var(--ocean-deep);
+  padding: 100px 60px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.bottom-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 40px,
+    rgba(200,169,110,0.03) 40px,
+    rgba(200,169,110,0.03) 41px
+  );
+}
+.bottom-cta-inner { position: relative; z-index: 1; }
+.bottom-cta h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px, 5vw, 64px);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.05;
+  margin-bottom: 16px;
+}
+.bottom-cta h2 em { font-style: italic; color: var(--sand); }
+.bottom-cta p {
+  font-size: 17px;
+  font-style: italic;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 48px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+.bottom-form {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  max-width: 500px;
+  margin: 0 auto 20px;
+}
+.bottom-input {
+  flex: 1;
+  padding: 18px 22px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  border: 2px solid rgba(200,169,110,0.4);
+  background: rgba(255,255,255,0.07);
+  color: var(--white);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.bottom-input::placeholder { color: rgba(255,255,255,0.25); }
+.bottom-input:focus { border-color: var(--sand); }
+.bottom-btn {
+  padding: 18px 36px;
+  background: var(--sand);
+  color: var(--ocean-deep);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.bottom-btn:hover { background: var(--sand-light); }
+.bottom-note {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 0.05em;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  padding: 32px 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.footer-brand {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--sand);
+}
+.footer-meta {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  color: rgba(255,255,255,0.25);
+  letter-spacing: 0.05em;
+}
+.footer-links {
+  display: flex;
+  gap: 20px;
+}
+.footer-links a {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  color: rgba(255,255,255,0.3);
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--sand); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.hero-edition { animation: fadeUp 0.6s ease both; }
+.hero-headline { animation: fadeUp 0.6s 0.1s ease both; }
+.hero-sub { animation: fadeUp 0.6s 0.2s ease both; }
+.signup-form { animation: fadeUp 0.6s 0.3s ease both; }
+.hero-stats { animation: fadeUp 0.6s 0.4s ease both; }
+
+/* ── SUCCESS STATE ── */
+.success-msg {
+  display: none;
+  background: rgba(200,169,110,0.15);
+  border: 1px solid rgba(200,169,110,0.4);
+  padding: 16px 20px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  color: var(--sand-light);
+  text-align: center;
+  max-width: 400px;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-left { padding: 60px 32px; }
+  .hero-left::after { display: none; }
+  .hero-right { padding: 40px 32px; }
+  .preview-card { max-width: 100%; }
+  .inside-grid { grid-template-columns: 1fr 1fr; }
+  .promise { grid-template-columns: 1fr 1fr; padding: 48px 32px; }
+  .headlines-grid { grid-template-columns: 1fr; }
+  .inside { padding: 80px 32px; }
+  .sample { padding: 80px 32px; }
+  .bottom-cta { padding: 80px 32px; }
+  .bottom-form { flex-direction: column; }
+  footer { flex-direction: column; gap: 16px; text-align: center; }
+}
+
+@media (max-width: 560px) {
+  .masthead-title { font-size: 17px; }
+  .inside-grid { grid-template-columns: 1fr; }
+  .promise { grid-template-columns: 1fr 1fr; padding: 40px 20px; gap: 24px; }
+  .inside { padding: 60px 20px; }
+  .sample { padding: 60px 20px; }
+  .bottom-cta { padding: 60px 20px; }
+  footer { padding: 24px 20px; }
+  .hero-left { padding: 48px 24px; }
+  .hero-right { padding: 32px 24px; }
+  .form-row { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD NAV -->
+<nav class="masthead">
+  <div class="masthead-title">The Frankston <span>Local</span></div>
+  <a href="#signup" class="masthead-cta">Subscribe Free</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-left-inner">
+      <div class="hero-edition">Free Weekly Newsletter · Frankston, VIC</div>
+
+      <h1 class="hero-headline">
+        Your suburb.<br>
+        <em>Honestly told.</em>
+      </h1>
+
+      <p class="hero-sub">
+        Crime updates, council decisions decoded, what's on this weekend — everything that actually matters in Frankston, every Friday morning.
+      </p>
+
+      <div class="signup-form" id="signup">
+        <script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="0148ec69-166e-4fd3-a943-1ac8f85ae105"></script>
+        <p class="form-promise" style="margin-top:12px;"><strong>Free forever.</strong> No spam. Unsubscribe in one click. No council funding — fully independent.</p>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">Fri</div>
+          <div class="stat-label">Every Friday</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">5<span style="font-size:16px">min</span></div>
+          <div class="stat-label">Read time</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">0<span style="font-size:16px">$</span></div>
+          <div class="stat-label">Forever free</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="preview-label">📰 Latest Issue Preview</div>
+    <div class="preview-card">
+      <div class="preview-masthead">
+        <h3>The Frankston <span>Local</span></h3>
+        <div class="preview-date">Friday 16 May 2026 · Issue #1</div>
+      </div>
+
+      <div class="preview-section">
+        <div class="preview-tag">🏗 Development</div>
+        <h4>Six-Storey Apartments Approved Near Kananook — What It Means for Your Street</h4>
+        <p>The VPA confirmed catchment areas within 800m of the CBD will allow 3–6 storey developments. We break down exactly which streets are affected.</p>
+      </div>
+
+      <div class="preview-section">
+        <div class="preview-tag">📅 What's On</div>
+        <h4>Foreshore Night Market · Garage Sale Trail · Creek Clean-Up</h4>
+        <p>Your complete guide to this weekend in Frankston — 4 events not to miss.</p>
+      </div>
+
+      <div class="preview-section">
+        <div class="preview-tag">⚠ Safety</div>
+        <h4>This Week's Crime & Safety Update</h4>
+        <p>Two car break-ins on Davey St · Witness appeal for Station St incident · New CCTV activated in Baxter Park.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT'S INSIDE -->
+<section class="inside">
+  <div class="inside-grid">
+    <div class="inside-item">
+      <span class="inside-icon">📰</span>
+      <h3>The Big Story</h3>
+      <p>One deep local story each week — development, community issues, local politics — told without spin or PR gloss.</p>
+      <span class="inside-num">1</span>
+    </div>
+    <div class="inside-item">
+      <span class="inside-icon">📅</span>
+      <h3>What's On</h3>
+      <p>Every event worth knowing about this weekend. Markets, sports, community days, free activities — all in one place.</p>
+      <span class="inside-num">2</span>
+    </div>
+    <div class="inside-item">
+      <span class="inside-icon">⚠️</span>
+      <h3>Safety Update</h3>
+      <p>Factual, calm crime and safety updates sourced from Victoria Police — no sensationalism, just what you need to know.</p>
+      <span class="inside-num">3</span>
+    </div>
+    <div class="inside-item">
+      <span class="inside-icon">🔎</span>
+      <h3>Suburb Spotlight</h3>
+      <p>Each week we go deep on one Frankston suburb — the stories, issues, and people the broader media ignores.</p>
+      <span class="inside-num">4</span>
+    </div>
+    <div class="inside-item">
+      <span class="inside-icon">🏛</span>
+      <h3>Council Watch</h3>
+      <p>We decode what council actually decided this week — in plain English, with zero press release language.</p>
+      <span class="inside-num">5</span>
+    </div>
+    <div class="inside-item">
+      <span class="inside-icon">🗣</span>
+      <h3>Resident Voice</h3>
+      <p>One local resident, one honest opinion. Real people, real names, real Frankston perspectives — every single week.</p>
+      <span class="inside-num">6</span>
+    </div>
+  </div>
+</section>
+
+<!-- PROMISE STRIP -->
+<section class="promise">
+  <div class="promise-item">
+    <span class="p-icon">🚫</span>
+    <h4>No Council Money</h4>
+    <p>Fully independent. No government funding, no agenda, no PR obligations.</p>
+  </div>
+  <div class="promise-item">
+    <span class="p-icon">📍</span>
+    <h4>Hyper-Local</h4>
+    <p>We only cover Frankston City. Not the Peninsula. Not Melbourne. Your streets.</p>
+  </div>
+  <div class="promise-item">
+    <span class="p-icon">🔓</span>
+    <h4>Always Free</h4>
+    <p>Supported by local businesses, not paywalls. Free to read, free to share, free forever.</p>
+  </div>
+  <div class="promise-item">
+    <span class="p-icon">📬</span>
+    <h4>Every Friday</h4>
+    <p>In your inbox before 8am every Friday. Consistent, reliable, never missed.</p>
+  </div>
+</section>
+
+<!-- SAMPLE HEADLINES -->
+<section class="sample">
+  <div class="sample-eyebrow">From the newsroom</div>
+  <h2>Stories you won't read <em>anywhere else</em></h2>
+  <p class="sample-sub">Because we only cover one place — and we cover it properly.</p>
+
+  <div class="headlines-grid">
+    <div class="hl-main">
+      <div class="hl-tag">🏘 Housing</div>
+      <h3>The Frankston North Streets That Could Change Forever Under the VPA's New Plan</h3>
+      <p>We mapped every affected street in the new planning catchment zones and spoke to residents who don't yet know their neighbourhood is in the development corridor. Here's the full picture before the consultation window closes.</p>
+    </div>
+    <div class="hl-sidebar">
+      <div class="hl-small">
+        <div class="hl-tag">💰 Cost of Living</div>
+        <h4>Community Support Frankston Sees Record Demand — Where to Get Help</h4>
+      </div>
+      <div class="hl-small">
+        <div class="hl-tag">🏖 Foreshore</div>
+        <h4>Australia's Most Accessible Beach Returns — What's New This Season</h4>
+      </div>
+      <div class="hl-small">
+        <div class="hl-tag">🏛 Council</div>
+        <h4>$137,000 Activity Subsidy Opens June 1 — How to Apply</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTOM CTA -->
+<section class="bottom-cta">
+  <div class="bottom-cta-inner">
+    <h2>Frankston deserves a<br><em>better local newsletter.</em></h2>
+    <p>Join your neighbours. Free every Friday. No spam, no spin, no council funding.</p>
+
+    <div class="bottom-form" style="max-width:500px; margin:0 auto 20px;">
+      <script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="0148ec69-166e-4fd3-a943-1ac8f85ae105"></script>
+    </div>
+    <p class="bottom-note">Unsubscribe anytime · No spam ever · Your email stays private</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">The Frankston Local</div>
+  <div class="footer-meta">© 2026 · Frankston City, VIC · Independent & free</div>
+  <div class="footer-links">
+    <a href="#">Submit a tip</a>
+    <a href="#">Advertise</a>
+    <a href="#">Contact</a>
+  </div>
+</footer>
+
+<script type="text/javascript" async src="https://subscribe-forms.beehiiv.com/attribution.js"></script>
+<script>
+  // Smooth scroll for nav CTA
+  document.querySelector('.masthead-cta').addEventListener('click', e => {
+    e.preventDefault();
+    document.getElementById('signup').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+
+  // Sticky nav shadow on scroll
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('.masthead');
+    nav.style.boxShadow = window.scrollY > 10 ? '0 2px 20px rgba(0,0,0,0.3)' : 'none';
+  });
+</script>
+
+</body>
+</html>
