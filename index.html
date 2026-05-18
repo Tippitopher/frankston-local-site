@@ -684,7 +684,7 @@ footer {
 <!-- MASTHEAD NAV -->
 <nav class="masthead">
   <div class="masthead-title">The Frankston <span>Local</span></div>
-  <a href="#signup" class="masthead-cta">Subscribe Free</a>
+  <a href="https://frankston-local.beehiiv.com/subscribe" target="_blank" class="masthead-cta">Subscribe Free</a>
 </nav>
 
 <!-- HERO -->
@@ -703,8 +703,8 @@ footer {
       </p>
 
       <div class="signup-form" id="signup">
-        <script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="0148ec69-166e-4fd3-a943-1ac8f85ae105"></script>
-        <p class="form-promise" style="margin-top:12px;"><strong>Free forever.</strong> No spam. Unsubscribe in one click. No council funding — fully independent.</p>
+        <a href="https://frankston-local.beehiiv.com/subscribe" target="_blank" class="signup-btn" style="display:inline-block;text-decoration:none;text-align:center;padding:18px 36px;font-size:14px;">Subscribe Free — It's Weekly &amp; Free →</a>
+        <p class="form-promise"><strong>Free forever.</strong> No spam. Unsubscribe in one click. No council funding — fully independent.</p>
       </div>
 
       <div class="hero-stats">
@@ -855,8 +855,8 @@ footer {
     <h2>Frankston deserves a<br><em>better local newsletter.</em></h2>
     <p>Join your neighbours. Free every Friday. No spam, no spin, no council funding.</p>
 
-    <div class="bottom-form" style="max-width:500px; margin:0 auto 20px;">
-      <script async src="https://subscribe-forms.beehiiv.com/v3/loader.js" data-beehiiv-form="0148ec69-166e-4fd3-a943-1ac8f85ae105"></script>
+    <div class="bottom-form" style="max-width:500px; margin:0 auto 20px; display:flex; justify-content:center;">
+      <a href="https://frankston-local.beehiiv.com/subscribe" target="_blank" class="bottom-btn" style="text-decoration:none;display:inline-block;">Subscribe Free — Every Friday →</a>
     </div>
     <p class="bottom-note">Unsubscribe anytime · No spam ever · Your email stays private</p>
   </div>
@@ -876,14 +876,7 @@ footer {
   </div>
 </footer>
 
-<script type="text/javascript" async src="https://subscribe-forms.beehiiv.com/attribution.js"></script>
 <script>
-  // Smooth scroll for nav CTA
-  document.querySelector('.masthead-cta').addEventListener('click', e => {
-    e.preventDefault();
-    document.getElementById('signup').scrollIntoView({ behavior: 'smooth', block: 'center' });
-  });
-
   // Sticky nav shadow on scroll
   window.addEventListener('scroll', () => {
     const nav = document.querySelector('.masthead');
