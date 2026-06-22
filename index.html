@@ -3,7 +3,57 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Frankston Local — Free Weekly Newsletter</title>
+<title>The Frankston Local — Free Weekly Newsletter for Frankston City, VIC</title>
+<meta name="description" content="The Frankston Local is a free, independent weekly email newsletter covering Frankston City, Victoria. Crime updates, council decisions, what's on this weekend — every Friday morning.">
+<meta name="keywords" content="Frankston newsletter, Frankston Local, Frankston news, Frankston City news, Frankston Victoria, local news Frankston, free newsletter Frankston">
+<meta name="author" content="Topher — The Frankston Local">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://www.frankstonlocal.au/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="The Frankston Local — Free Weekly Newsletter">
+<meta property="og:description" content="Free, independent local news for Frankston City, VIC. Crime updates, council decisions, what's on — every Friday morning.">
+<meta property="og:url" content="https://www.frankstonlocal.au/">
+<meta property="og:site_name" content="The Frankston Local">
+<meta property="og:image" content="https://www.frankstonlocal.au/The_Frankston_Local_Logo.png">
+<meta property="og:locale" content="en_AU">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Frankston Local — Free Weekly Newsletter">
+<meta name="twitter:description" content="Free, independent local news for Frankston City, VIC. Every Friday morning.">
+<meta name="twitter:image" content="https://www.frankstonlocal.au/The_Frankston_Local_Logo.png">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "NewsMediaOrganization",
+  "name": "The Frankston Local",
+  "url": "https://www.frankstonlocal.au/",
+  "logo": "https://www.frankstonlocal.au/The_Frankston_Local_Logo.png",
+  "description": "Free, independent weekly email newsletter covering Frankston City, Victoria.",
+  "areaServed": {
+    "@type": "City",
+    "name": "Frankston",
+    "containedInPlace": {
+      "@type": "State",
+      "name": "Victoria",
+      "containedInPlace": {
+        "@type": "Country",
+        "name": "Australia"
+      }
+    }
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "email": "hello@frankstonlocal.au",
+    "contactType": "editorial"
+  },
+  "publishingPrinciples": "Independent, no council funding, no agenda"
+}
+</script>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -596,6 +646,8 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
 }
 .footer-brand {
   font-family: 'Playfair Display', serif;
@@ -611,7 +663,9 @@ footer {
 }
 .footer-links {
   display: flex;
-  gap: 20px;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
 }
 .footer-links a {
   font-family: 'DM Sans', sans-serif;
@@ -623,6 +677,61 @@ footer {
   transition: color 0.2s;
 }
 .footer-links a:hover { color: var(--sand); }
+
+/* ── ABOUT SECTION ── */
+.about {
+  padding: 80px 60px;
+  background: var(--paper);
+  border-top: 1px solid #ddd5c0;
+}
+.about-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 48px;
+  align-items: center;
+}
+.about-avatar {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: var(--ocean-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  flex-shrink: 0;
+  border: 3px solid var(--sand);
+}
+.about-eyebrow {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--sand);
+  margin-bottom: 10px;
+}
+.about h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--ocean-deep);
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+.about p {
+  font-size: 15px;
+  line-height: 1.75;
+  color: #4a4438;
+}
+.about p + p { margin-top: 10px; }
+@media (max-width: 600px) {
+  .about-inner { grid-template-columns: 1fr; gap: 24px; }
+  .about { padding: 60px 24px; }
+  .about-avatar { width: 72px; height: 72px; font-size: 30px; }
+}
 
 /* ── ANIMATIONS ── */
 @keyframes fadeUp {
@@ -733,25 +842,25 @@ footer {
     <div class="preview-card">
       <div class="preview-masthead">
         <h3>The Frankston <span>Local</span></h3>
-        <div class="preview-date">Friday 19 June 2026 · Issue #6</div>
+        <div class="preview-date">Friday 29 May 2026 · Issue #3</div>
       </div>
 
       <div class="preview-section">
-        <div class="preview-tag">🏘 Homelessness</div>
-        <h4>Mayor and CEO Slept Rough Last Night — and the State Still Hasn't Answered</h4>
-        <p>Rough sleeping at a four-year high. Mayor Cr Sue Baker and CEO Tennille Bradley joined the Vinnies CEO Sleepout last night, pushing for $2.5M in state funding. No candidate has committed. State election: November 2026.</p>
+        <div class="preview-tag">🏗 Development & Transport</div>
+        <h4>Boom Gates Going, New Station Coming: Seaford's Frankston Line Future Is Finally Taking Shape</h4>
+        <p>Concept designs for the new elevated Seaford Station are out. The Armstrongs Road and Station Street crossings are going for good. Construction starts 2027 — new station opens 2029.</p>
       </div>
 
       <div class="preview-section">
-        <div class="preview-tag">🚗 Safety</div>
-        <h4>$1.5M Car Rebirthing Syndicate Busted — Carrum Downs Among Raid Sites</h4>
-        <p>Seven warrants executed Tuesday. Eight Holden HSVs, a Jeep and a LandCruiser seized. Three men charged. VIN numbers swapped before cars were re-registered. Investigation ongoing.</p>
+        <div class="preview-tag">🏛 Council Watch</div>
+        <h4>Budget Passed — Rates Capped, Waste Charges Down, and Drama on the Council Floor</h4>
+        <p>The 2026–27 budget is done. Rates held at 2.75%, waste charges falling 3–4%. But Cr Butler says he was blocked from moving an alternate motion, and Cr Bolam moved a dissent against the Mayor.</p>
       </div>
 
       <div class="preview-section">
-        <div class="preview-tag">🎉 What's On Tonight</div>
-        <h4>Drag Bingo, Rod Stewart Tribute and Dolphins vs Collingwood — All Tonight in Frankston</h4>
-        <p>Drag Bingo at the Brewhouse from 7pm (free). The UK Rod Stewart Show at the Arts Centre from 7:30pm. Dolphins host Collingwood at Kinetic Stadium, kick-off 7:35pm.</p>
+        <div class="preview-tag">🔎 Suburb Spotlight</div>
+        <h4>Seaford: Beach Town on the Verge of a Very Big Change</h4>
+        <p>Unpretentious, tight-knit, with a foreshore that earns its reputation. Now the ground crews are in the car park and the future is coming whether Seaford's ready or not.</p>
       </div>
     </div>
   </div>
@@ -761,40 +870,53 @@ footer {
 <section class="inside">
   <div class="inside-grid">
     <div class="inside-item">
-      <span class="inside-icon">📰</span>
+      <span class="inside-icon" aria-hidden="true">📰</span>
       <h3>The Big Story</h3>
       <p>One deep local story each week — development, community issues, local politics — told without spin or PR gloss.</p>
-      <span class="inside-num">1</span>
+      <span class="inside-num" aria-hidden="true">1</span>
     </div>
     <div class="inside-item">
-      <span class="inside-icon">📅</span>
+      <span class="inside-icon" aria-hidden="true">📅</span>
       <h3>What's On</h3>
       <p>Every event worth knowing about this weekend. Markets, sports, community days, free activities — all in one place.</p>
-      <span class="inside-num">2</span>
+      <span class="inside-num" aria-hidden="true">2</span>
     </div>
     <div class="inside-item">
-      <span class="inside-icon">⚠️</span>
+      <span class="inside-icon" aria-hidden="true">⚠️</span>
       <h3>Safety Update</h3>
       <p>Factual, calm crime and safety updates sourced from Victoria Police — no sensationalism, just what you need to know.</p>
-      <span class="inside-num">3</span>
+      <span class="inside-num" aria-hidden="true">3</span>
     </div>
     <div class="inside-item">
-      <span class="inside-icon">🔎</span>
+      <span class="inside-icon" aria-hidden="true">🔎</span>
       <h3>Suburb Spotlight</h3>
       <p>Each week we go deep on one Frankston suburb — the stories, issues, and people the broader media ignores.</p>
-      <span class="inside-num">4</span>
+      <span class="inside-num" aria-hidden="true">4</span>
     </div>
     <div class="inside-item">
-      <span class="inside-icon">🏛</span>
+      <span class="inside-icon" aria-hidden="true">🏛</span>
       <h3>Council Watch</h3>
       <p>We decode what council actually decided this week — in plain English, with zero press release language.</p>
-      <span class="inside-num">5</span>
+      <span class="inside-num" aria-hidden="true">5</span>
     </div>
     <div class="inside-item">
-      <span class="inside-icon">🗣</span>
+      <span class="inside-icon" aria-hidden="true">🗣</span>
       <h3>Resident Voice</h3>
       <p>One local resident, one honest opinion. Real people, real names, real Frankston perspectives — every single week.</p>
-      <span class="inside-num">6</span>
+      <span class="inside-num" aria-hidden="true">6</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT THE EDITOR -->
+<section class="about">
+  <div class="about-inner">
+    <div class="about-avatar" aria-hidden="true">👋</div>
+    <div>
+      <div class="about-eyebrow">About the editor</div>
+      <h2>G'day — I'm Topher</h2>
+      <p>I started The Frankston Local because I was tired of Frankston either being ignored or only making the news when something went wrong. This city has 140,000 people, real stories, and a community that deserves better than crime clickbait and council press releases.</p>
+      <p>Every Friday I write the whole thing myself — no AI spin, no sponsored content, no council funding. Just straight reporting on what's actually happening in our suburb. If you've got a tip, a story, or a gripe, my inbox is always open.</p>
     </div>
   </div>
 </section>
@@ -831,28 +953,26 @@ footer {
 
   <div class="headlines-grid">
     <div class="hl-main">
-      <div class="hl-tag">🏘 Homelessness</div>
-      <h3>Mayor and CEO Slept Rough Last Night — and the State Still Hasn't Answered</h3>
-      <p>Rough sleeping in Frankston is at a four-year high. Last night Mayor Cr Sue Baker and CEO Tennille Bradley joined the Vinnies CEO Sleepout, calling for $2.5M in state government funding. Not one election candidate has committed. State election: November 2026.</p>
+      <div class="hl-tag">🏗 Development & Transport</div>
+      <h3>Boom Gates Going, New Station Coming — Seaford's Frankston Line Future Is Finally Taking Shape</h3>
+      <p>The Allan Government has released concept designs for the new elevated Seaford Station. The Armstrongs Road and Station Street level crossings are going for good — seven near-misses since 2016, boom gates down 30+ minutes every morning peak. Construction starts 2027. New station opens 2029. The ground crews are already in the car park.</p>
     </div>
     <div class="hl-sidebar">
       <div class="hl-small">
-        <div class="hl-tag">🚗 Safety</div>
-        <h4>$1.5M car rebirthing syndicate busted — Carrum Downs among seven properties raided</h4>
+        <div class="hl-tag">🔎 Suburb Spotlight</div>
+        <h4>Seaford: Unpretentious, tight-knit, and on the verge of its biggest change in decades</h4>
       </div>
       <div class="hl-small">
-        <div class="hl-tag">🏥 Community Care</div>
-        <h4>Brotherhood of St Laurence takes over home care program from 30 June — what it means for Frankston residents</h4>
+        <div class="hl-tag">🌊 Only in Frankston</div>
+        <h4>Brett from Frankston spent dusk to dawn on the pier and could barely keep up with the squid bites. Bucket fulls.</h4>
       </div>
       <div class="hl-small">
-        <div class="hl-tag">📍 Suburb Spotlight</div>
-        <h4>Karingal — Peninsula Private, Karingal Hub, and the suburb that just gets on with it</h4>
+        <div class="hl-tag">🏆 Quick Bites</div>
+        <h4>Frankston Sharks BMX Club crowned Australia's best club — three national titles at the 2026 AusCycling Nationals</h4>
       </div>
     </div>
   </div>
-  <a href="https://frankston-local.beehiiv.com/p/the-frankston-local-issue-6" target="_blank" style="display:inline-block;margin-top:0;margin-bottom:16px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--ocean-deep);background:var(--sand);padding:14px 32px;text-decoration:none;">Read Issue #6 →</a>
-  <br>
-  <a href="https://frankston-local.beehiiv.com" target="_blank" style="display:inline-block;margin-bottom:56px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--ocean-deep);background:transparent;border:2px solid var(--ocean-deep);padding:12px 32px;text-decoration:none;">Read Previous Issues →</a>
+  <a href="https://frankston-local.beehiiv.com/p/the-frankston-local-issue-3" target="_blank" style="display:inline-block;margin-top:0;margin-bottom:56px;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--ocean-deep);background:var(--sand);padding:14px 32px;text-decoration:none;">Read Issue #3 →</a>
 </section>
 
 <!-- BOTTOM CTA -->
@@ -881,6 +1001,7 @@ footer {
     <a href="mailto:tips@frankstonlocal.au">Only in Frankston</a>
     <a href="mailto:ads@frankstonlocal.au">Advertise</a>
     <a href="mailto:hello@frankstonlocal.au">Contact</a>
+    <a href="https://frankston-local.beehiiv.com/p/privacy-policy">Privacy Policy</a>
   </div>
 </footer>
 
